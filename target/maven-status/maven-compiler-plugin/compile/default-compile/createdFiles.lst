@@ -1,0 +1,5 @@
+com\example\gateway\service\gateway\config\GatewayConfig$FallbackController.class
+com\example\gateway\service\gateway\Application.class
+com\example\gateway\service\gateway\config\GatewayConfig.class
+com\example\gateway\service\gateway\controller\AuthController.class
+com\example\gateway\service\gateway\filters\LoggingGlobalFilter.class
