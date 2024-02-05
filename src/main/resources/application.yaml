@@ -47,3 +47,8 @@ server:
 #logging:
 #  level:
 #    org.springframework.security: DEBUG
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.59.104:30012/eureka

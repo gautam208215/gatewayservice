@@ -1,32 +1,12 @@
-# Use an official Node.js image as the base image
-FROM node:14-alpine as build
+# Use an official OpenJDK runtime as a base image
+FROM openjdk:17-oracle
 
-# Set the working directory in the container
+# Set the working directory inside the container
+
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
+# Copy the JAR file into the container at /app
+COPY  ./target/service.gateway-0.0.1-SNAPSHOT.jar /app/service.gateway-0.0.1-SNAPSHOT.jar
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code to the container
-COPY . .
-
-# Build the React app
-RUN npm run build
-
-# Use a lightweight Node.js image for the production build
-FROM node:14-alpine
-
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the production build from the build image
-COPY --from=build /app/build ./build
-
-# Expose the port on which your React app will run (e.g., 80)
-EXPOSE 80
-
-# Start the React app
-CMD ["npx", "serve", "-s", "build", "-l", "80"]
+# Specify the command to run on container startup
+CMD ["java", "-jar", "service.gateway-0.0.1-SNAPSHOT.jar"]
