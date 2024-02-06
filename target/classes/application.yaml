@@ -6,6 +6,9 @@ spring:
     name: edge-service
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
 #      routes:
 #        - id: service-one
 #          uri: lb://service-one
@@ -20,6 +23,7 @@ spring:
 #            - Path=/second/**
 #          filters:
 #            - RewritePath=/service-one/(?<path>.*), /$\{path}
+
     default-filters:
 #      - TokenRelay=keycloak
 #      - saveSession
@@ -48,7 +52,4 @@ server:
 #  level:
 #    org.springframework.security: DEBUG
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka:8761/eureka
+

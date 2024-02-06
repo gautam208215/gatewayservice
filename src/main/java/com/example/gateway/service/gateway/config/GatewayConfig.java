@@ -32,7 +32,7 @@ public class GatewayConfig {
         return builder.routes()
                 .route("service-one", r -> r.path("/first/**")
 //                        .filters(f -> f.filter(filterFactory.apply()))
-                        .uri("lb://service-one"))
+                        .uri("http://service-one.dental.svc.cluster.local"))
                 .build();
     }
 
